@@ -4,5 +4,11 @@ import { Injectable } from "@angular/core";
   providedIn: 'root'
 })
 export class MyFormGroup {
-  constructor(public myFormControls: Object) {}
+  myFormControls: any
+  constructor() {
+  }
+  group(controls: any) {
+    this.myFormControls = controls
+    return controls
+  }
 }
