@@ -11,6 +11,7 @@ import { MyFormGroup } from "./my_form_bulider";
       <label>age</label>
       <input myFormControlName="age">
     </form>
+    <button (click)="getForm()">get form</button>
     <form [myForm]="form1">
       <label>data</label>
       <input myFormControlName="data">
@@ -23,12 +24,16 @@ export class MyFormDemoComponent {
   form1!: MyFormGroup
   constructor(private myFormGroup: MyFormGroup) {
     this.form = this.myFormGroup.group({
-      name: 'hello',
-      age: 'world'
+      name: {value: 'heldadsadlo'},
+      age: {value: 'world'}
     })
     this.form1 = this.myFormGroup.group({
-      data: 'hello',
-      age: 'world'
+      data: {value: 'hello'},
+      age: {value: 'world'}
     })
+  }
+
+  getForm() {
+    console.log(this.form)
   }
 }

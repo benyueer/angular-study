@@ -8,7 +8,20 @@ export class MyFormGroup {
   constructor() {
   }
   group(controls: any) {
+    controls.get = this.get
     this.myFormControls = controls
     return controls
+  }
+
+  get(path: string[]) {
+    console.log(this)
+    console.log(path)
+    let ctrl = this
+    while(path.length) {
+      // @ts-ignore
+      ctrl = ctrl[path[0]]
+      path.shift()
+    }
+    return ctrl
   }
 }
