@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { MyAService } from "./a.service";
 
 @Component({
@@ -8,10 +8,12 @@ import { MyAService } from "./a.service";
     <p>{{aSrv.data}}</p>
     <button (click)="clickHandler()">click</button>
   `,
-  providers: [MyAService]
+  providers: [{provide: MyAService, useClass: MyAService}]
 })
 export class MyAComponent {
-  constructor(public aSrv: MyAService) {}
+  constructor(@Inject(MyAService) public aSrv: MyAService) {
+    console.log(aSrv)
+  }
 
   clickHandler() {
     this.aSrv.data = Math.random()

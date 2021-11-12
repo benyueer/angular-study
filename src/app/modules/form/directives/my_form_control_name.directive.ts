@@ -16,7 +16,7 @@ export class MyFormControlName {
   constructor(
     @Optional() @Host() @SkipSelf() private parent: MyFormDirective,
     public myDefaultValueAccessorDirective: MyDefaultValueAccessorDirective
-  ) { 
+  ) {
   }
 
   get formDirective(): any {
@@ -29,7 +29,10 @@ export class MyFormControlName {
 
   ngOnChanges(changes: SimpleChange) {
     console.log('name change')
-    if (!this._added) this._setUoControl()
+    if (!this._added) {
+      this._added = true
+      this._setUoControl()
+    }
   }
 
   get path() {

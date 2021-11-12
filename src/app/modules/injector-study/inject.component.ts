@@ -9,9 +9,11 @@ const DATA_INJECTOR = new InjectionToken<string>('data')
     <my-comp-a>
     </my-comp-a>
     <my-comp-a></my-comp-a>
-    <p>{{getName(bCom)}}</p>
+    <!-- <p>{{getName(bCom)}}</p> -->
   `,
-  providers: [{provide: DATA_INJECTOR, useValue: 'inject data'}]
+  providers: [
+    {provide: DATA_INJECTOR, useValue: 'inject data'}
+  ]
 })
 export class MyInjectComponent {
 
