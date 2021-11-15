@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MyAService } from "./a.service";
+import { MyAService, NumberService } from "./a.service";
 
 @Component({
   selector: 'my-comp-b',
@@ -10,5 +10,7 @@ import { MyAService } from "./a.service";
   exportAs: 'bComp'
 })
 export class MyBComponent {
-  constructor(public aSrv: MyAService) {}
+  constructor(public aSrv: MyAService, num: NumberService) {
+    console.log(num)
+  }
 }

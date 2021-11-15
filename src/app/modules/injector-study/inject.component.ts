@@ -1,4 +1,5 @@
-import { Component, InjectionToken, Inject } from "@angular/core";
+import { Component, InjectionToken, Inject, Self, Optional } from "@angular/core";
+import { MyAService, NumberService } from "./a.service";
 
 const DATA_INJECTOR = new InjectionToken<string>('data')
 
@@ -12,13 +13,17 @@ const DATA_INJECTOR = new InjectionToken<string>('data')
     <!-- <p>{{getName(bCom)}}</p> -->
   `,
   providers: [
-    {provide: DATA_INJECTOR, useValue: 'inject data'}
+    { provide: DATA_INJECTOR, useValue: 'inject data' },
+    { provide: NumberService, useValue: {num: 123}}
   ]
 })
 export class MyInjectComponent {
 
-  constructor(@Inject(DATA_INJECTOR) data: string) {
-    console.log(data)
+  constructor(
+    @Inject(DATA_INJECTOR) data: string,
+    @Optional() @Self() srv: MyAService
+  ) {
+    console.log(srv)
   }
 
   getName(comp: any) {
